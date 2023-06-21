@@ -1,4 +1,4 @@
-import createRandomDeck
+import cricketGame
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -16,7 +16,7 @@ for i in range(1,numSims+1):
     temphalfs = 0
     tempDucks = 0
     for j in range(0,sampleSize):
-        currentGame = createRandomDeck.simulateGame()
+        currentGame = cricketGame.simulateGame()
         listOfResults = currentGame.startGame()
         tempRuns+= listOfResults[0]
         if(tempRuns==0):
