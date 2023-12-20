@@ -7,8 +7,8 @@ recordOfRuns = []
 NumberOfCenturies = 0
 NumberOfHalfs = 0
 NumberOfDucks = 0
-numSims = 5*(10**5)
-sampleSize = 30
+numSims = 5*(10**5) #change the number of simulations here
+sampleSize = 30 #change the sample size here 
 for i in range(1,numSims+1):
 
     tempRuns = 0

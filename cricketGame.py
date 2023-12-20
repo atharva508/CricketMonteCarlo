@@ -20,21 +20,24 @@ class simulateGame():
     #checks for centuries
     def century(self):
         for i in range(0,3):
-            if(self.gameBoard[i]==self.gameBoard[i+1] and self.gameBoard[i+1]==self.gameBoard[i+2] and self.gameBoard[i]!=0):
+            if(self.gameBoard[3*i]==self.gameBoard[(3*i)+1] and self.gameBoard[(3*i)+1]==self.gameBoard[(3*i)+2] and self.gameBoard[3*i]!=0):
+                
                 self.runs+=100
+                self.cent_boards.append(self.gameBoard.copy())
                 if(self.nextCard<49):
-                    self.gameBoard[i] = self.getNextCard()
-                    self.gameBoard[i+1] = self.getNextCard()
-                    self.gameBoard[i+2] = self.getNextCard()
+                    self.gameBoard[3*i] = self.getNextCard()
+                    self.gameBoard[(3*i)+1] = self.getNextCard()
+                    self.gameBoard[(3*i)+2] = self.getNextCard()
 
                 else:
                     self.runs+= 52-self.nextCard
                     for j in range(0,52-self.nextCard):
-                       self.gameBoard[i+j] =self.getNextCard()
+                       self.gameBoard[(3*i)+j] =self.getNextCard()
                    
 
                 return True
             elif(self.gameBoard[i]==self.gameBoard[i+3] and self.gameBoard[i+3]==self.gameBoard[i+6] and self.gameBoard[i]!=0):
+                self.cent_boards.append(self.gameBoard.copy)
                 self.runs+=100
                 if(self.nextCard<49):
                     self.gameBoard[i] = self.getNextCard()
@@ -53,6 +56,7 @@ class simulateGame():
     def halfCentury(self):
         if(self.gameBoard[0]==self.gameBoard[4] and self.gameBoard[4]==self.gameBoard[8]and self.gameBoard[4]!=0):
             self.runs+=50
+            self.half_cent_boards.append(self.gameBoard.copy())
             if(self.nextCard<49):
                 self.gameBoard[0] = self.getNextCard()
                 self.gameBoard[4] = self.getNextCard()
@@ -63,8 +67,9 @@ class simulateGame():
                        self.gameBoard[j*4] =self.getNextCard()
             return True
         
-        elif(self.gameBoard[6]==self.gameBoard[5] and self.gameBoard[4]==self.gameBoard[2]and self.gameBoard[4]!=0):
+        elif(self.gameBoard[6]==self.gameBoard[4] and self.gameBoard[4]==self.gameBoard[2] and self.gameBoard[4]!=0):
             self.runs+=50
+            self.half_cent_boards.append(self.gameBoard.copy())
             if(self.nextCard<49):
                 self.gameBoard[6] = self.getNextCard()
                 self.gameBoard[4] = self.getNextCard()
@@ -86,6 +91,9 @@ class simulateGame():
         self.numCenturies = 0
         self.numHalfs = 0
         self.runs = 0
+        self.cent_boards = []
+        self.half_cent_boards = []
+        self.duck_boards = []
 
    # checks if a pair of cards is there on the game board 
     def pairAvailable(self, num1, num2):
@@ -146,9 +154,11 @@ class simulateGame():
             if self.century():
                # print("CENTURYYYY")
                 self.numCenturies+=1
+                
             elif self.halfCentury():
                # print("HALF CENTURYYYY")
                 self.numHalfs+=1
+                
 
             elif self.kqjAvailable():
                 task = "DO SHIT"
@@ -186,8 +196,9 @@ class simulateGame():
         # The total runs are 0 in case only 9 cards are laid out
         if(self.runs ==9):
             self.runs = 0
+            self.duck_boards.append(self.gameBoard.copy())
         
-        return[self.runs,self.numCenturies,self.numHalfs]
+        return[self.runs,self.numCenturies,self.numHalfs,self.cent_boards,self.half_cent_boards,self.duck_boards]
 
 
         
