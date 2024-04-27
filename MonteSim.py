@@ -31,6 +31,7 @@ for i in range(1,numSims+1):
 
 mean = np.mean(recordOfRuns)
 median = np.median(recordOfRuns)
+
 print("NUMBER OF CENTURIES  = ", NumberOfCenturies)
 print("NUMBER OF HALF CENTURIES = ",NumberOfHalfs)
 plt.hist(recordOfRuns, bins='auto', edgecolor='blue')
