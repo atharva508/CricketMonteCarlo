@@ -18,6 +18,7 @@ class simulateGame():
         return self.deck[self.nextCard-1]
 
     #checks for centuries
+    #different implementation of century method
     def century(self):
         for i in range(0,3):
             if(self.gameBoard[3*i]==self.gameBoard[(3*i)+1] and self.gameBoard[(3*i)+1]==self.gameBoard[(3*i)+2] and self.gameBoard[3*i]!=0):
