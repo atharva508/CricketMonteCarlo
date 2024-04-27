@@ -12,3 +12,5 @@ However the version of cricket simulated in this program, is a simpler ( and mor
 In this version, the suits of the cards are irrelevant, and all cards have equal value.
 
 All the python code is present in the repository, along with the graphed results for all the simulations!
+
+In Order to run the source code simply run "python MonteSim.py" with your choice of hyperparameters
