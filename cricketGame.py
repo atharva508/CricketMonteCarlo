@@ -52,7 +52,7 @@ class simulateGame():
                 return True
         return False
 
-    #checks for half centuries
+    #optimized half century calculation function
     def halfCentury(self):
         if(self.gameBoard[0]==self.gameBoard[4] and self.gameBoard[4]==self.gameBoard[8]and self.gameBoard[4]!=0):
             self.runs+=50
